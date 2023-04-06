@@ -41,3 +41,8 @@
 .blank{
   color: red;
 }
+
+
+.nav-btn {
+  text-decoration:none !important;
+}

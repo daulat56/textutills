@@ -56,19 +56,20 @@ const [text, setText] = useState('');
       <h1>{props.heading}</h1>
       <div className="mb-3">
           {/* <label for="form" class="form-label">write text</label>  */}
-          <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='light'?'grey':'light  ', color:props.mode==='dark'?'white':'dark    '} } id="form" rows="8"></textarea>
+          <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='light'?'#24367c':'light  ', color:props.mode==='dark'?'white':'dark    '} } id="form" rows="8"></textarea>
           </div>
-          <button className='btn btn-primary mx-3' onClick={handleUpclick} >upper case</button>
+          {/* disable is used to make the button disabled if text area is empty */}
+          <button disabled={text.length===0} className='btn btn-primary mx-3 my-1' onClick={handleUpclick} >upper case</button>
           {/* mx is used to give distance between the button */}
-          <button className='btn btn-primary ' onClick={handleLoclick} >lower case</button>
-          <button className='btn btn-primary mx-3 ' onClick={handletitleclick} >title case</button>
-          <button className='btn btn-primary mx-3 ' onClick={handlecopy} >copy text</button>
-          <button className='btn btn-danger mx-3 ' onClick={handleOnclick} > clear text</button>
+          <button disabled={text.length===0} className='btn btn-primary mx-3 my-1 ' onClick={handleLoclick} >lower case</button>
+          <button disabled={text.length===0} className='btn btn-primary mx-3 my-1 ' onClick={handletitleclick} >title case</button>
+          <button disabled={text.length===0} className='btn btn-primary mx-3 my-1 ' onClick={handlecopy} >copy text</button>
+          <button disabled={text.length===0} className='btn btn-danger mx-3 my-1' onClick={handleOnclick} > clear text</button>
     </div>
     <div className="container my-3" style={{color:props.mode==='dark'?'white':'black  '} } >
       <h1> Your text summary</h1>
-      <p> {text.split(" ").length}words  {text.length} char- 34550</p>
-      <p>{0.008*text.split(" ").length} minutes reading time</p>
+      <p> {text.split(" ").filter((element)=>{return element.length!==0}).length}words  {text.length} char- 34550</p>
+      <p>{0.008*text.split(" ").filter((element)=>{return element.length!==0}).length} minutes reading time</p>
       {/* <p>{text.count.rows} rows </p/> */}
        <p>{text.split('\n').length} lines</p>
       <h2>preview</h2>

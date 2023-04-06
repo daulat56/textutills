@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import React , { useState } from 'react';
 import './App.css';
 import About from './components/About';
@@ -66,18 +65,17 @@ function App() {
      return (  
     <>
       
-        <Navbar title = "textutills" aboutText="about us" home="Home"  mode={mode} toggleMode={toggleMode}/>
+        <Navbar aboutText="About us" home="Home"  mode={mode} toggleMode={toggleMode}/>
          <Alert alert={alert}/>
-        {/* <div className="container"> */}
+        <div className="container">
         <Routes>
-          <Route exact path="/about" element={<About />}/>
+          <Route exact path="/about" element={<About mode={mode}/>}/>
             
-          <Route exact path="/" element={<Textforms showAlert={showAlert} heading="Enter the text to analayse below" mode={mode}/>}/>
-          
-          
+          <Route exact path="/" element={<Textforms showAlert={showAlert} heading="Enter the text to analayse below" mode={mode}/>}/>  
         </Routes>
+        {/* <Textforms showAlert={showAlert} heading="Enter the text to analayse below" mode={mode}/> */}
         
-        {/* </div> */}
+        </div>
       
       
     </>
